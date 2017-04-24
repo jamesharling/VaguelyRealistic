@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\Program Files %28x86%29\Steam\steamapps\common\Kerbal Space Program Dev\GameData\VaguelyRealistic\Plugins\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,6 +34,10 @@
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="KSPUtil">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed\KSPUtil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,17 +51,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="PartPatches\Pods-Squad.cfg" />
-    <Compile Include="Modules\ModuleVaguelyRealistic.cs" />
+    <Compile Include="Enums\EngineIgnitionState.cs" />
+    <Compile Include="Modules\ModuleEngineIgniter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="PartPatches\Probes-Squad.cfg" />
-    <None Include="PartPatches\Utility-Squad.cfg" />
+    <Compile Include="Resources\IgniterResource.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EngineIgniter.cfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>xcopy /e/y "$(TargetPath)" "$(SolutionDir)..\KSP\GameData\VaguelyRealistic\Plugins\"
-xcopy /e/y "$(ProjectDir)PartPatches" "$(SolutionDir)\..\KSP\GameData\VaguelyRealistic\PartPatches\"</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
